@@ -7,7 +7,6 @@
 //
 
 #import "PieChartView.h"
-#import <objc/runtime.h>
 
 #define RADIUS 100 //半径
 #define TEXT_FROM_CENTER (RADIUS*2/3) //文字中心点与圆心的距离
