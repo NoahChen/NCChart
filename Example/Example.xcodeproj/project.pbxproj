@@ -1,0 +1,562 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9C23A6351FE7953B002D75AF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C23A6341FE7953B002D75AF /* AppDelegate.m */; };
+		9C23A63B1FE7953B002D75AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C23A6391FE7953B002D75AF /* Main.storyboard */; };
+		9C23A63D1FE7953B002D75AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C23A63C1FE7953B002D75AF /* Assets.xcassets */; };
+		9C23A6401FE7953B002D75AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C23A63E1FE7953B002D75AF /* LaunchScreen.storyboard */; };
+		9C23A6431FE7953B002D75AF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C23A6421FE7953B002D75AF /* main.m */; };
+		9C23A64D1FE7953C002D75AF /* ExampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C23A64C1FE7953C002D75AF /* ExampleUITests.m */; };
+		9C23A6621FE795C3002D75AF /* BarChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C23A6581FE795C2002D75AF /* BarChartViewController.m */; };
+		9C23A6631FE795C3002D75AF /* LineChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C23A6591FE795C2002D75AF /* LineChartViewController.xib */; };
+		9C23A6641FE795C3002D75AF /* PieChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C23A65A1FE795C2002D75AF /* PieChartViewController.m */; };
+		9C23A6651FE795C3002D75AF /* PieChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C23A65B1FE795C2002D75AF /* PieChartViewController.xib */; };
+		9C23A6661FE795C3002D75AF /* LineChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C23A65C1FE795C2002D75AF /* LineChartViewController.m */; };
+		9C23A6671FE795C3002D75AF /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C23A6601FE795C3002D75AF /* RootViewController.m */; };
+		9C23A6681FE795C3002D75AF /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C23A6611FE795C3002D75AF /* RootViewController.xib */; };
+		9C23A6731FE7964E002D75AF /* BarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C23A66C1FE7964E002D75AF /* BarChartView.m */; };
+		9C23A6741FE7964E002D75AF /* CylinderButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C23A66E1FE7964E002D75AF /* CylinderButton.m */; };
+		9C23A6751FE7964E002D75AF /* PieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C23A6721FE7964E002D75AF /* PieChartView.m */; };
+		9C23A6831FE7D869002D75AF /* LineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C23A6791FE7D868002D75AF /* LineView.m */; };
+		9C23A6841FE7D869002D75AF /* HorizontalAxisLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C23A67B1FE7D868002D75AF /* HorizontalAxisLineView.m */; };
+		9C23A6851FE7D869002D75AF /* LineChartTextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C23A67C1FE7D868002D75AF /* LineChartTextLayer.m */; };
+		9C23A6861FE7D869002D75AF /* LinePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C23A67D1FE7D868002D75AF /* LinePoint.m */; };
+		9C23A6871FE7D869002D75AF /* LinePointView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C23A6801FE7D868002D75AF /* LinePointView.m */; };
+		9C23A6881FE7D869002D75AF /* LineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C23A6821FE7D869002D75AF /* LineChart.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9C23A6491FE7953C002D75AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9C23A6281FE7953B002D75AF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9C23A62F1FE7953B002D75AF;
+			remoteInfo = Example;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9C23A6301FE7953B002D75AF /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C23A6331FE7953B002D75AF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9C23A6341FE7953B002D75AF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9C23A63A1FE7953B002D75AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9C23A63C1FE7953B002D75AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9C23A63F1FE7953B002D75AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9C23A6411FE7953B002D75AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9C23A6421FE7953B002D75AF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9C23A6481FE7953C002D75AF /* ExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C23A64C1FE7953C002D75AF /* ExampleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExampleUITests.m; sourceTree = "<group>"; };
+		9C23A64E1FE7953C002D75AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9C23A6571FE795C2002D75AF /* PieChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieChartViewController.h; sourceTree = "<group>"; };
+		9C23A6581FE795C2002D75AF /* BarChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarChartViewController.m; sourceTree = "<group>"; };
+		9C23A6591FE795C2002D75AF /* LineChartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LineChartViewController.xib; sourceTree = "<group>"; };
+		9C23A65A1FE795C2002D75AF /* PieChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PieChartViewController.m; sourceTree = "<group>"; };
+		9C23A65B1FE795C2002D75AF /* PieChartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PieChartViewController.xib; sourceTree = "<group>"; };
+		9C23A65C1FE795C2002D75AF /* LineChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineChartViewController.m; sourceTree = "<group>"; };
+		9C23A65D1FE795C2002D75AF /* BarChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarChartViewController.h; sourceTree = "<group>"; };
+		9C23A65E1FE795C2002D75AF /* LineChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineChartViewController.h; sourceTree = "<group>"; };
+		9C23A65F1FE795C3002D75AF /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		9C23A6601FE795C3002D75AF /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		9C23A6611FE795C3002D75AF /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
+		9C23A66B1FE7964E002D75AF /* BarChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarChartView.h; sourceTree = "<group>"; };
+		9C23A66C1FE7964E002D75AF /* BarChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarChartView.m; sourceTree = "<group>"; };
+		9C23A66D1FE7964E002D75AF /* CylinderButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CylinderButton.h; sourceTree = "<group>"; };
+		9C23A66E1FE7964E002D75AF /* CylinderButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CylinderButton.m; sourceTree = "<group>"; };
+		9C23A6711FE7964E002D75AF /* PieChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieChartView.h; sourceTree = "<group>"; };
+		9C23A6721FE7964E002D75AF /* PieChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PieChartView.m; sourceTree = "<group>"; };
+		9C23A6761FE79E02002D75AF /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		9C23A6771FE7D867002D75AF /* LineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineView.h; sourceTree = "<group>"; };
+		9C23A6781FE7D867002D75AF /* LinePoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinePoint.h; sourceTree = "<group>"; };
+		9C23A6791FE7D868002D75AF /* LineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineView.m; sourceTree = "<group>"; };
+		9C23A67A1FE7D868002D75AF /* HorizontalAxisLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalAxisLineView.h; sourceTree = "<group>"; };
+		9C23A67B1FE7D868002D75AF /* HorizontalAxisLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizontalAxisLineView.m; sourceTree = "<group>"; };
+		9C23A67C1FE7D868002D75AF /* LineChartTextLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineChartTextLayer.m; sourceTree = "<group>"; };
+		9C23A67D1FE7D868002D75AF /* LinePoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinePoint.m; sourceTree = "<group>"; };
+		9C23A67E1FE7D868002D75AF /* LineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineChart.h; sourceTree = "<group>"; };
+		9C23A67F1FE7D868002D75AF /* LinePointView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinePointView.h; sourceTree = "<group>"; };
+		9C23A6801FE7D868002D75AF /* LinePointView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinePointView.m; sourceTree = "<group>"; };
+		9C23A6811FE7D868002D75AF /* LineChartTextLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineChartTextLayer.h; sourceTree = "<group>"; };
+		9C23A6821FE7D869002D75AF /* LineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineChart.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9C23A62D1FE7953B002D75AF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C23A6451FE7953C002D75AF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9C23A6271FE7953B002D75AF = {
+			isa = PBXGroup;
+			children = (
+				9C23A6691FE7964E002D75AF /* NCChart */,
+				9C23A6321FE7953B002D75AF /* Example */,
+				9C23A64B1FE7953C002D75AF /* ExampleUITests */,
+				9C23A6311FE7953B002D75AF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9C23A6311FE7953B002D75AF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9C23A6301FE7953B002D75AF /* Example.app */,
+				9C23A6481FE7953C002D75AF /* ExampleUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9C23A6321FE7953B002D75AF /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				9C23A6331FE7953B002D75AF /* AppDelegate.h */,
+				9C23A6341FE7953B002D75AF /* AppDelegate.m */,
+				9C23A65F1FE795C3002D75AF /* RootViewController.h */,
+				9C23A6601FE795C3002D75AF /* RootViewController.m */,
+				9C23A6611FE795C3002D75AF /* RootViewController.xib */,
+				9C23A65D1FE795C2002D75AF /* BarChartViewController.h */,
+				9C23A6581FE795C2002D75AF /* BarChartViewController.m */,
+				9C23A65E1FE795C2002D75AF /* LineChartViewController.h */,
+				9C23A65C1FE795C2002D75AF /* LineChartViewController.m */,
+				9C23A6591FE795C2002D75AF /* LineChartViewController.xib */,
+				9C23A6571FE795C2002D75AF /* PieChartViewController.h */,
+				9C23A65A1FE795C2002D75AF /* PieChartViewController.m */,
+				9C23A65B1FE795C2002D75AF /* PieChartViewController.xib */,
+				9C23A6391FE7953B002D75AF /* Main.storyboard */,
+				9C23A63C1FE7953B002D75AF /* Assets.xcassets */,
+				9C23A63E1FE7953B002D75AF /* LaunchScreen.storyboard */,
+				9C23A6411FE7953B002D75AF /* Info.plist */,
+				9C23A6421FE7953B002D75AF /* main.m */,
+				9C23A6761FE79E02002D75AF /* PrefixHeader.pch */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
+		9C23A64B1FE7953C002D75AF /* ExampleUITests */ = {
+			isa = PBXGroup;
+			children = (
+				9C23A64C1FE7953C002D75AF /* ExampleUITests.m */,
+				9C23A64E1FE7953C002D75AF /* Info.plist */,
+			);
+			path = ExampleUITests;
+			sourceTree = "<group>";
+		};
+		9C23A6691FE7964E002D75AF /* NCChart */ = {
+			isa = PBXGroup;
+			children = (
+				9C23A66A1FE7964E002D75AF /* BarChart */,
+				9C23A66F1FE7964E002D75AF /* LineChart */,
+				9C23A6701FE7964E002D75AF /* PieChart */,
+			);
+			name = NCChart;
+			path = ../NCChart;
+			sourceTree = "<group>";
+		};
+		9C23A66A1FE7964E002D75AF /* BarChart */ = {
+			isa = PBXGroup;
+			children = (
+				9C23A66B1FE7964E002D75AF /* BarChartView.h */,
+				9C23A66C1FE7964E002D75AF /* BarChartView.m */,
+				9C23A66D1FE7964E002D75AF /* CylinderButton.h */,
+				9C23A66E1FE7964E002D75AF /* CylinderButton.m */,
+			);
+			path = BarChart;
+			sourceTree = "<group>";
+		};
+		9C23A66F1FE7964E002D75AF /* LineChart */ = {
+			isa = PBXGroup;
+			children = (
+				9C23A67E1FE7D868002D75AF /* LineChart.h */,
+				9C23A6821FE7D869002D75AF /* LineChart.m */,
+				9C23A6771FE7D867002D75AF /* LineView.h */,
+				9C23A6791FE7D868002D75AF /* LineView.m */,
+				9C23A67F1FE7D868002D75AF /* LinePointView.h */,
+				9C23A6801FE7D868002D75AF /* LinePointView.m */,
+				9C23A67A1FE7D868002D75AF /* HorizontalAxisLineView.h */,
+				9C23A67B1FE7D868002D75AF /* HorizontalAxisLineView.m */,
+				9C23A6811FE7D868002D75AF /* LineChartTextLayer.h */,
+				9C23A67C1FE7D868002D75AF /* LineChartTextLayer.m */,
+				9C23A6781FE7D867002D75AF /* LinePoint.h */,
+				9C23A67D1FE7D868002D75AF /* LinePoint.m */,
+			);
+			path = LineChart;
+			sourceTree = "<group>";
+		};
+		9C23A6701FE7964E002D75AF /* PieChart */ = {
+			isa = PBXGroup;
+			children = (
+				9C23A6711FE7964E002D75AF /* PieChartView.h */,
+				9C23A6721FE7964E002D75AF /* PieChartView.m */,
+			);
+			path = PieChart;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9C23A62F1FE7953B002D75AF /* Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9C23A6511FE7953C002D75AF /* Build configuration list for PBXNativeTarget "Example" */;
+			buildPhases = (
+				9C23A62C1FE7953B002D75AF /* Sources */,
+				9C23A62D1FE7953B002D75AF /* Frameworks */,
+				9C23A62E1FE7953B002D75AF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Example;
+			productName = Example;
+			productReference = 9C23A6301FE7953B002D75AF /* Example.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9C23A6471FE7953C002D75AF /* ExampleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9C23A6541FE7953C002D75AF /* Build configuration list for PBXNativeTarget "ExampleUITests" */;
+			buildPhases = (
+				9C23A6441FE7953C002D75AF /* Sources */,
+				9C23A6451FE7953C002D75AF /* Frameworks */,
+				9C23A6461FE7953C002D75AF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9C23A64A1FE7953C002D75AF /* PBXTargetDependency */,
+			);
+			name = ExampleUITests;
+			productName = ExampleUITests;
+			productReference = 9C23A6481FE7953C002D75AF /* ExampleUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9C23A6281FE7953B002D75AF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = "陈方舟";
+				TargetAttributes = {
+					9C23A62F1FE7953B002D75AF = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+					9C23A6471FE7953C002D75AF = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 9C23A62F1FE7953B002D75AF;
+					};
+				};
+			};
+			buildConfigurationList = 9C23A62B1FE7953B002D75AF /* Build configuration list for PBXProject "Example" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9C23A6271FE7953B002D75AF;
+			productRefGroup = 9C23A6311FE7953B002D75AF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9C23A62F1FE7953B002D75AF /* Example */,
+				9C23A6471FE7953C002D75AF /* ExampleUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9C23A62E1FE7953B002D75AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C23A6651FE795C3002D75AF /* PieChartViewController.xib in Resources */,
+				9C23A6401FE7953B002D75AF /* LaunchScreen.storyboard in Resources */,
+				9C23A6681FE795C3002D75AF /* RootViewController.xib in Resources */,
+				9C23A6631FE795C3002D75AF /* LineChartViewController.xib in Resources */,
+				9C23A63D1FE7953B002D75AF /* Assets.xcassets in Resources */,
+				9C23A63B1FE7953B002D75AF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C23A6461FE7953C002D75AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9C23A62C1FE7953B002D75AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C23A6841FE7D869002D75AF /* HorizontalAxisLineView.m in Sources */,
+				9C23A6731FE7964E002D75AF /* BarChartView.m in Sources */,
+				9C23A6741FE7964E002D75AF /* CylinderButton.m in Sources */,
+				9C23A6871FE7D869002D75AF /* LinePointView.m in Sources */,
+				9C23A6861FE7D869002D75AF /* LinePoint.m in Sources */,
+				9C23A6851FE7D869002D75AF /* LineChartTextLayer.m in Sources */,
+				9C23A6751FE7964E002D75AF /* PieChartView.m in Sources */,
+				9C23A6881FE7D869002D75AF /* LineChart.m in Sources */,
+				9C23A6671FE795C3002D75AF /* RootViewController.m in Sources */,
+				9C23A6831FE7D869002D75AF /* LineView.m in Sources */,
+				9C23A6621FE795C3002D75AF /* BarChartViewController.m in Sources */,
+				9C23A6641FE795C3002D75AF /* PieChartViewController.m in Sources */,
+				9C23A6431FE7953B002D75AF /* main.m in Sources */,
+				9C23A6351FE7953B002D75AF /* AppDelegate.m in Sources */,
+				9C23A6661FE795C3002D75AF /* LineChartViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C23A6441FE7953C002D75AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C23A64D1FE7953C002D75AF /* ExampleUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9C23A64A1FE7953C002D75AF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9C23A62F1FE7953B002D75AF /* Example */;
+			targetProxy = 9C23A6491FE7953C002D75AF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9C23A6391FE7953B002D75AF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C23A63A1FE7953B002D75AF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9C23A63E1FE7953B002D75AF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C23A63F1FE7953B002D75AF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9C23A64F1FE7953C002D75AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		9C23A6501FE7953C002D75AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9C23A6521FE7953C002D75AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Example/PrefixHeader.pch";
+				INFOPLIST_FILE = Example/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = noah.cn.Example;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9C23A6531FE7953C002D75AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Example/PrefixHeader.pch";
+				INFOPLIST_FILE = Example/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = noah.cn.Example;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		9C23A6551FE7953C002D75AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ExampleUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = noah.cn.ExampleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Example;
+			};
+			name = Debug;
+		};
+		9C23A6561FE7953C002D75AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ExampleUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = noah.cn.ExampleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Example;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9C23A62B1FE7953B002D75AF /* Build configuration list for PBXProject "Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C23A64F1FE7953C002D75AF /* Debug */,
+				9C23A6501FE7953C002D75AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9C23A6511FE7953C002D75AF /* Build configuration list for PBXNativeTarget "Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C23A6521FE7953C002D75AF /* Debug */,
+				9C23A6531FE7953C002D75AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9C23A6541FE7953C002D75AF /* Build configuration list for PBXNativeTarget "ExampleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C23A6551FE7953C002D75AF /* Debug */,
+				9C23A6561FE7953C002D75AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9C23A6281FE7953B002D75AF /* Project object */;
+}
