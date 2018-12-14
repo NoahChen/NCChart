@@ -25,6 +25,29 @@
                           [UIColor orangeColor],
                           [UIColor greenColor]];
     
+    NSArray *dataArr = @[
+                         @{
+                             @"name": @"工作",
+                             @"num": @(100),
+                             @"color": [UIColor redColor]
+                             },
+                         @{
+                             @"name": @"空闲",
+                             @"num": @(50),
+                             @"color": [UIColor blueColor]
+                             },
+                         @{
+                             @"name": @"离线",
+                             @"num": @(26),
+                             @"color": [UIColor orangeColor]
+                             },
+                         @{
+                             @"name": @"故障",
+                             @"num": @(12),
+                             @"color": [UIColor greenColor]
+                             }
+                         ];
+    
     PieChartView *pieChartView = [[PieChartView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) percentage:percentArr titles:titleArr colors:colorArr];
     [self.view addSubview:pieChartView];
 }

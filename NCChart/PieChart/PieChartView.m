@@ -7,18 +7,26 @@
 //
 
 #import "PieChartView.h"
+#import "PieCenterView.h"
+#import "PieDataModel.h"
 
 #define RADIUS 100 //半径
 #define TEXT_FROM_CENTER (RADIUS*2/3) //文字中心点与圆心的距离
-#define LINEBEGIN_FROM_CENTER (RADIUS-30) //指示线起点与圆心距离
-#define LINEEND_FROM_CENTER (RADIUS+20) //指示线终点与圆心距离
+#define LINEBEGIN_FROM_CENTER (RADIUS+10) //指示线起点与圆心距离
+#define LINEEND_FROM_CENTER (RADIUS+30) //指示线拐点与圆心距离
 
-@implementation PieChartView {
+@interface PieChartView () {
     NSArray *_percentageArr;
     NSArray *_titleArr;
     NSArray *_colorArr;
     UIView *_textView;
 }
+
+@property (nonatomic, strong) NSMutableArray *modelArr;
+
+@end
+
+@implementation PieChartView
 
 - (instancetype)initWithFrame:(CGRect)frame percentage:(NSArray<NSString *> *)percentages titles:(NSArray<NSString *> *)titleArr colors:(NSArray<UIColor *> *)colorArr {
     if (self = [super initWithFrame:frame]) {
@@ -32,7 +40,14 @@
     return self;
 }
 
-//饼图内文字
+- (NSMutableArray *)modelArr {
+    if (!_modelArr) {
+        _modelArr = [NSMutableArray array];
+    }
+    return _modelArr;
+}
+
+//扇形
 - (void)createShapeLayerWithColor:(UIColor *)color title:(NSString *)title percent:(NSString *)percent path:(CGPathRef)path startAngle:(CGFloat)startAngle endAngle:(CGFloat)endAngle {
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     [shapeLayer setFillColor:color.CGColor];
@@ -58,7 +73,7 @@
     textLayer.anchorPoint = CGPointMake(0.5, 0.5);
     textLayer.alignmentMode = kCAAlignmentCenter;
     textLayer.backgroundColor = [UIColor clearColor].CGColor;
-    textLayer.foregroundColor = [UIColor blueColor].CGColor;
+    textLayer.foregroundColor = color.CGColor;
     
     NSDictionary *labelFont = @{NSFontAttributeName:self.labelFont};
     CGSize size = [@"12" sizeWithAttributes:labelFont];
@@ -70,32 +85,46 @@
     CGPoint center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
     
     CGFloat halfAngle = (endAngle - startAngle)/2;
-    if (endAngle - startAngle > M_PI/6) {
-        [textLayer setPosition:CGPointMake(center.x + (TEXT_FROM_CENTER * cos(startAngle+halfAngle)), center.y + (TEXT_FROM_CENTER * sin(startAngle+halfAngle)))];
-    }else {
-        //指示线
-        CGPoint startPoint = CGPointMake(center.x + (LINEBEGIN_FROM_CENTER * cos(startAngle+halfAngle)), center.y + (LINEBEGIN_FROM_CENTER * sin(startAngle+halfAngle)));
-        CGPoint centerPoint = CGPointMake(center.x + (LINEEND_FROM_CENTER * cos(startAngle+halfAngle)), center.y + (LINEEND_FROM_CENTER * sin(startAngle+halfAngle)));
-        CGPoint endPoint = CGPointMake(centerPoint.x + 30, centerPoint.y);
-        
-        UIBezierPath *linePath = [UIBezierPath bezierPath];
-        [linePath moveToPoint: startPoint];
-        [linePath addLineToPoint:centerPoint];
-        [linePath addLineToPoint:endPoint];
-        linePath.lineWidth = 1.0;
-        
-        CAShapeLayer *lineLayer = [CAShapeLayer layer];
-        lineLayer.lineWidth = 1.0;
-        lineLayer.path = linePath.CGPath;
-        lineLayer.strokeColor = [UIColor blackColor].CGColor;
-        lineLayer.fillColor = nil;
-        [shapeLayer addSublayer:lineLayer];
-        
-        //文字
+    //指示线
+    CGPoint startPoint = CGPointMake(center.x + (LINEBEGIN_FROM_CENTER * cos(startAngle+halfAngle)), center.y + (LINEBEGIN_FROM_CENTER * sin(startAngle+halfAngle)));
+    CGPoint centerPoint = CGPointMake(center.x + (LINEEND_FROM_CENTER * cos(startAngle+halfAngle)), center.y + (LINEEND_FROM_CENTER * sin(startAngle+halfAngle)));
+    
+    CGPoint endPoint = CGPointMake(centerPoint.x + 50, centerPoint.y);
+    if (startAngle+halfAngle > M_PI_2 && startAngle+halfAngle < M_PI_2*3) {
+        endPoint = CGPointMake(centerPoint.x - 50, centerPoint.y);
+    }
+    
+    //指示线起点的点
+    UIBezierPath *startPointPath = [UIBezierPath bezierPathWithArcCenter:startPoint radius:3.0 startAngle:0 endAngle:M_PI*2 clockwise:YES];
+    
+    CAShapeLayer *startPointLayer = [CAShapeLayer layer];
+    startPointLayer.path = startPointPath.CGPath;
+    startPointLayer.fillColor = color.CGColor;
+    [shapeLayer addSublayer:startPointLayer];
+    
+    //指示线layer
+    UIBezierPath *linePath = [UIBezierPath bezierPath];
+    [linePath moveToPoint: startPoint];
+    [linePath addLineToPoint:centerPoint];
+    [linePath addLineToPoint:endPoint];
+    linePath.lineWidth = 1.0;
+    
+    CAShapeLayer *lineLayer = [CAShapeLayer layer];
+    lineLayer.lineWidth = 1.0;
+    lineLayer.path = linePath.CGPath;
+    lineLayer.strokeColor = color.CGColor;
+    lineLayer.fillColor = nil;
+    [shapeLayer addSublayer:lineLayer];
+    
+    //文字
+    if (startAngle+halfAngle > M_PI/2 && startAngle+halfAngle < M_PI*3/2) {
+        [textLayer setPosition:CGPointMake(centerPoint.x - 25, centerPoint.y + 15)];
+    } else {
         [textLayer setPosition:CGPointMake(centerPoint.x + 25, centerPoint.y + 15)];
     }
 }
 
+//饼图绘制
 - (void)drawRect:(CGRect)rect {
     CGPoint circleCenter = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
     CGFloat startAngle = 0;
@@ -108,28 +137,49 @@
         
         startAngle = endAngle;
     }
+    
+    //中间的圆
+    PieCenterView *centerView = [[PieCenterView alloc] init];
+    
+    centerView.frame = CGRectMake(0, 0, 150, 150);
+    
+    CGRect frame = centerView.frame;
+    frame.origin = CGPointMake(self.frame.size.width * 0.5 - frame.size.width * 0.5, self.frame.size.height * 0.5 - frame.size.width * 0.5);
+    centerView.frame = frame;
+    
+    centerView.nameLabel.text = @"文字";
+    
+    [self addSubview:centerView];
 }
 
-- (NSInteger)getCurrentSelectedOnTouch:(CGPoint)point type:(int)type {
+- (CAShapeLayer *)getCurrentSelectedOnTouch:(CGPoint)point type:(int)type {
     __block NSInteger selectIndex = -1;
+    __block CAShapeLayer *selectShapelayer = [CAShapeLayer layer];
     CGAffineTransform transform = CGAffineTransformIdentity;
     [self.layer.sublayers enumerateObjectsUsingBlock:^(CALayer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        CAShapeLayer *shapeLayer = (CAShapeLayer *)obj;
-        CGPathRef path = shapeLayer.path;
-        
-        if (CGPathContainsPoint(path, &transform, point, 0)) {
-            selectIndex = idx;
+        if ([obj isKindOfClass:[CAShapeLayer class]]) {
+            CAShapeLayer *shapeLayer = (CAShapeLayer *)obj;
+            CGPathRef path = shapeLayer.path;
+            
+            if (CGPathContainsPoint(path, &transform, point, 0)) {
+                selectIndex = idx;
+                NSLog(@"点击的部分------%ld",(long)selectIndex);
+                selectShapelayer = shapeLayer;
+            }
         }
     }];
-    return selectIndex;
+//    return selectIndex;
+    return selectShapelayer;
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [super touchesEnded:touches withEvent:event];
     //得到触摸点
     CGPoint point = [[touches anyObject] locationInView:self];
-    NSInteger selectIndex = [self getCurrentSelectedOnTouch:point type:0];
-    NSLog(@"点击的部分------%ld",(long)selectIndex);
+//    NSInteger selectIndex = [self getCurrentSelectedOnTouch:point type:0];
+//    NSLog(@"点击的部分------%ld",(long)selectIndex);
+    CAShapeLayer *selectShapelayer = [self getCurrentSelectedOnTouch:point type:0];
+    
 }
 
 @end

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01053AFC21C35AE60042B1AF /* PieCenterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 01053AFB21C35AE60042B1AF /* PieCenterView.m */; };
+		01053AFF21C360430042B1AF /* PieDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 01053AFE21C360430042B1AF /* PieDataModel.m */; };
 		9C23A6351FE7953B002D75AF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C23A6341FE7953B002D75AF /* AppDelegate.m */; };
 		9C23A63B1FE7953B002D75AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C23A6391FE7953B002D75AF /* Main.storyboard */; };
 		9C23A63D1FE7953B002D75AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C23A63C1FE7953B002D75AF /* Assets.xcassets */; };
@@ -42,6 +44,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01053AFA21C35AE60042B1AF /* PieCenterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PieCenterView.h; sourceTree = "<group>"; };
+		01053AFB21C35AE60042B1AF /* PieCenterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PieCenterView.m; sourceTree = "<group>"; };
+		01053AFD21C360430042B1AF /* PieDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PieDataModel.h; sourceTree = "<group>"; };
+		01053AFE21C360430042B1AF /* PieDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PieDataModel.m; sourceTree = "<group>"; };
 		9C23A6301FE7953B002D75AF /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C23A6331FE7953B002D75AF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9C23A6341FE7953B002D75AF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -203,6 +209,10 @@
 			children = (
 				9C23A6711FE7964E002D75AF /* PieChartView.h */,
 				9C23A6721FE7964E002D75AF /* PieChartView.m */,
+				01053AFA21C35AE60042B1AF /* PieCenterView.h */,
+				01053AFB21C35AE60042B1AF /* PieCenterView.m */,
+				01053AFD21C360430042B1AF /* PieDataModel.h */,
+				01053AFE21C360430042B1AF /* PieDataModel.m */,
 			);
 			path = PieChart;
 			sourceTree = "<group>";
@@ -316,11 +326,13 @@
 				9C23A6731FE7964E002D75AF /* BarChartView.m in Sources */,
 				9C23A6741FE7964E002D75AF /* CylinderButton.m in Sources */,
 				9C23A6871FE7D869002D75AF /* LinePointView.m in Sources */,
+				01053AFC21C35AE60042B1AF /* PieCenterView.m in Sources */,
 				9C23A6861FE7D869002D75AF /* LinePoint.m in Sources */,
 				9C23A6851FE7D869002D75AF /* LineChartTextLayer.m in Sources */,
 				9C23A6751FE7964E002D75AF /* PieChartView.m in Sources */,
 				9C23A6881FE7D869002D75AF /* LineChart.m in Sources */,
 				9C23A6671FE795C3002D75AF /* RootViewController.m in Sources */,
+				01053AFF21C360430042B1AF /* PieDataModel.m in Sources */,
 				9C23A6831FE7D869002D75AF /* LineView.m in Sources */,
 				9C23A6621FE795C3002D75AF /* BarChartViewController.m in Sources */,
 				9C23A6641FE795C3002D75AF /* PieChartViewController.m in Sources */,
