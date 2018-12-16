@@ -54,7 +54,7 @@
         [modelArr addObject:[PieDataModel modelWithDictionary:dic]];
     }
     
-    PieChartView *pieChartView = [[PieChartView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) datas:dataArr];
+    PieChartView *pieChartView = [[PieChartView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) models:modelArr];
     [self.view addSubview:pieChartView];
 }
 

@@ -10,7 +10,8 @@
 #import "PieCenterView.h"
 #import "PieDataModel.h"
 
-#define RADIUS 100 //半径
+#define RADIUS 100 //外侧半径
+#define INSIDE_RADIUS 65 //内测半径
 #define TEXT_FROM_CENTER (RADIUS*2/3) //文字中心点与圆心的距离
 #define LINEBEGIN_FROM_CENTER (RADIUS+10) //指示线起点与圆心距离
 #define LINEEND_FROM_CENTER (RADIUS+30) //指示线拐点与圆心距离
@@ -39,8 +40,11 @@
 //扇形
 - (void)createShapeLayerWithColor:(UIColor *)color title:(NSString *)title percent:(NSString *)percent path:(CGPathRef)path startAngle:(CGFloat)startAngle endAngle:(CGFloat)endAngle {
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
-    [shapeLayer setFillColor:color.CGColor];
+    shapeLayer.lineWidth = 35.0;
+    shapeLayer.strokeColor = nil;
+    shapeLayer.fillColor = color.CGColor;
     shapeLayer.path = path;
+    shapeLayer.fillRule = kCAFillRuleEvenOdd;
     [self.layer addSublayer:shapeLayer];
     
     NSString *percentStr = [NSString stringWithFormat:@"%.0f%@", [percent intValue]/360.0*100, @"%"];//文字字符串
@@ -121,29 +125,43 @@
         PieDataModel *model = self.models[i];
         
         CGFloat endAngle = startAngle + [model.num intValue]/180.0*M_PI;
-        UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:circleCenter radius:RADIUS startAngle:startAngle endAngle:endAngle clockwise:YES];
-        [path addLineToPoint:circleCenter];
         
-        [self createShapeLayerWithColor:model.color title:model.name percent:[NSString stringWithFormat:<#(nonnull NSString *), ...#>]model.num path:path.CGPath startAngle:startAngle endAngle:endAngle];
+        UIBezierPath *path = [UIBezierPath bezierPath];
+        [path moveToPoint:CGPointMake(circleCenter.x + (RADIUS * cos(startAngle)), circleCenter.y + (RADIUS * sin(startAngle)))];
+        //内弧
+        [path addArcWithCenter:circleCenter radius:INSIDE_RADIUS startAngle:startAngle endAngle:endAngle clockwise:YES];
+        
+        [path addLineToPoint:CGPointMake(circleCenter.x + (RADIUS * cos(endAngle)), circleCenter.y + (RADIUS * sin(endAngle)))];
+        
+        //外弧
+        [path addArcWithCenter:circleCenter radius:RADIUS startAngle:endAngle endAngle:startAngle clockwise:NO];
+        [path closePath];
+
+        model.startAngle = startAngle;
+        model.endAngle = endAngle;
+        CGFloat halfAngle = (endAngle - startAngle)/2;
+        model.halfAngle = halfAngle;
+        
+        [self createShapeLayerWithColor:model.color title:model.name percent:[NSString stringWithFormat:@"%@", model.num] path:path.CGPath startAngle:startAngle endAngle:endAngle];
         
         startAngle = endAngle;
     }
     
     //中间的圆
-    PieCenterView *centerView = [[PieCenterView alloc] init];
-    
-    centerView.frame = CGRectMake(0, 0, 150, 150);
-    
-    CGRect frame = centerView.frame;
-    frame.origin = CGPointMake(self.frame.size.width * 0.5 - frame.size.width * 0.5, self.frame.size.height * 0.5 - frame.size.width * 0.5);
-    centerView.frame = frame;
-    
-    centerView.nameLabel.text = @"文字";
-    
-    [self addSubview:centerView];
+//    PieCenterView *centerView = [[PieCenterView alloc] init];
+//
+//    centerView.frame = CGRectMake(0, 0, 150, 150);
+//
+//    CGRect frame = centerView.frame;
+//    frame.origin = CGPointMake(self.frame.size.width * 0.5 - frame.size.width * 0.5, self.frame.size.height * 0.5 - frame.size.width * 0.5);
+//    centerView.frame = frame;
+//
+//    centerView.nameLabel.text = @"文字";
+//
+//    [self addSubview:centerView];
 }
 
-- (CAShapeLayer *)getCurrentSelectedOnTouch:(CGPoint)point type:(int)type {
+- (void)getCurrentSelectedOnTouch:(CGPoint)point type:(int)type {
     __block NSInteger selectIndex = -1;
     __block CAShapeLayer *selectShapelayer = [CAShapeLayer layer];
     CGAffineTransform transform = CGAffineTransformIdentity;
@@ -156,11 +174,27 @@
                 selectIndex = idx;
                 NSLog(@"点击的部分------%ld",(long)selectIndex);
                 selectShapelayer = shapeLayer;
+                
+                [self previousSelectedShapeLayerPositionBackWithCurrentSelectedShapLayer:shapeLayer];
+                
+                PieDataModel *model = self.models[idx];
+                __block CGPoint layerPosition = shapeLayer.position;
+                [UIView animateWithDuration:0.5 animations:^{
+                    if (model.isSelected) {
+                        layerPosition = CGPointMake(layerPosition.x - (5 * cos(model.startAngle+model.halfAngle)), layerPosition.y - (5 * sin(model.startAngle+model.halfAngle)));
+                    } else {
+                        layerPosition = CGPointMake(layerPosition.x + (5 * cos(model.startAngle+model.halfAngle)), layerPosition.y + (5 * sin(model.startAngle+model.halfAngle)));
+                    }
+                    shapeLayer.position = layerPosition;
+                } completion:^(BOOL finished) {
+                    if (finished) {
+                        model.isSelected = !model.isSelected;
+                    }
+                }];
             }
         }
     }];
 //    return selectIndex;
-    return selectShapelayer;
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -169,8 +203,29 @@
     CGPoint point = [[touches anyObject] locationInView:self];
 //    NSInteger selectIndex = [self getCurrentSelectedOnTouch:point type:0];
 //    NSLog(@"点击的部分------%ld",(long)selectIndex);
-    CAShapeLayer *selectShapelayer = [self getCurrentSelectedOnTouch:point type:0];
-    
+    [self getCurrentSelectedOnTouch:point type:0];
+}
+
+- (void)previousSelectedShapeLayerPositionBackWithCurrentSelectedShapLayer:(CAShapeLayer *)currentSelectedShapeLayer {
+    for (int i = 0; i<self.layer.sublayers.count; i++) {
+        CALayer *layer = self.layer.sublayers[i];
+        if ([layer isKindOfClass:[CAShapeLayer class]]) {
+            PieDataModel *model = self.models[i];
+            CAShapeLayer *shapeLayer = (CAShapeLayer *)layer;
+            if(![shapeLayer isEqual:currentSelectedShapeLayer] && model.isSelected) {
+                __block CGPoint layerPosition = shapeLayer.position;
+                [UIView animateWithDuration:0.5 animations:^{
+                    layerPosition = CGPointMake(layerPosition.x - (5 * cos(model.startAngle+model.halfAngle)), layerPosition.y - (5 * sin(model.startAngle+model.halfAngle)));
+                    shapeLayer.position = layerPosition;
+                } completion:^(BOOL finished) {
+                    if (finished) {
+                        model.isSelected = !model.isSelected;
+                    }
+                }];
+                break;
+            }
+        }
+    }
 }
 
 @end

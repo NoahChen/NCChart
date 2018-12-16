@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) float startAngle;
 @property (nonatomic, assign) float endAngle;
 @property (nonatomic, assign) float halfAngle;
+@property (nonatomic, assign) BOOL isSelected;
 
 + (id)modelWithDictionary:(NSDictionary *)dic;
 
