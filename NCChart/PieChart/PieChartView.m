@@ -16,35 +16,24 @@
 #define LINEEND_FROM_CENTER (RADIUS+30) //指示线拐点与圆心距离
 
 @interface PieChartView () {
-    NSArray *_percentageArr;
-    NSArray *_titleArr;
-    NSArray *_colorArr;
     UIView *_textView;
 }
 
-@property (nonatomic, strong) NSMutableArray *modelArr;
+@property (nonatomic, strong) NSArray *models;
+@property (nonatomic, assign) int total;
 
 @end
 
 @implementation PieChartView
 
-- (instancetype)initWithFrame:(CGRect)frame percentage:(NSArray<NSString *> *)percentages titles:(NSArray<NSString *> *)titleArr colors:(NSArray<UIColor *> *)colorArr {
+- (instancetype)initWithFrame:(CGRect)frame models:(NSArray *)models {
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = [UIColor whiteColor];
-        _percentageArr = percentages;
-        _titleArr = titleArr;
-        _colorArr = colorArr;
         self.labelFont = [UIFont systemFontOfSize:13];
         //[self drawCircle];
+        self.models = models;
     }
     return self;
-}
-
-- (NSMutableArray *)modelArr {
-    if (!_modelArr) {
-        _modelArr = [NSMutableArray array];
-    }
-    return _modelArr;
 }
 
 //扇形
@@ -128,12 +117,14 @@
 - (void)drawRect:(CGRect)rect {
     CGPoint circleCenter = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
     CGFloat startAngle = 0;
-    for (int i = 0; i<_percentageArr.count; i++) {
-        CGFloat endAngle = startAngle + [_percentageArr[i] intValue]/180.0*M_PI;
+    for (int i = 0; i<self.models.count; i++) {
+        PieDataModel *model = self.models[i];
+        
+        CGFloat endAngle = startAngle + [model.num intValue]/180.0*M_PI;
         UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:circleCenter radius:RADIUS startAngle:startAngle endAngle:endAngle clockwise:YES];
         [path addLineToPoint:circleCenter];
         
-        [self createShapeLayerWithColor:_colorArr[i] title:_titleArr[i] percent:_percentageArr[i] path:path.CGPath startAngle:startAngle endAngle:endAngle];
+        [self createShapeLayerWithColor:model.color title:model.name percent:[NSString stringWithFormat:<#(nonnull NSString *), ...#>]model.num path:path.CGPath startAngle:startAngle endAngle:endAngle];
         
         startAngle = endAngle;
     }

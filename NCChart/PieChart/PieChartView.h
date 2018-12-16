@@ -12,6 +12,6 @@
 
 @property (nonatomic, strong) UIFont *labelFont;
 
-- (instancetype)initWithFrame:(CGRect)frame percentage:(NSArray <NSString *> *)percentages titles:(NSArray <NSString *> *)titleArr colors:(NSArray <UIColor *> *)colorArr;
+- (instancetype)initWithFrame:(CGRect)frame models:(NSArray *)models;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "PieChartViewController.h"
 #import "PieChartView.h"
+#import "PieDataModel.h"
 
 @interface PieChartViewController ()
 
@@ -25,30 +26,35 @@
                           [UIColor orangeColor],
                           [UIColor greenColor]];
     
+    NSMutableArray *modelArr = [NSMutableArray array];
     NSArray *dataArr = @[
                          @{
                              @"name": @"工作",
-                             @"num": @(100),
+                             @"num": @(225),
                              @"color": [UIColor redColor]
                              },
                          @{
                              @"name": @"空闲",
-                             @"num": @(50),
+                             @"num": @(90),
                              @"color": [UIColor blueColor]
                              },
                          @{
                              @"name": @"离线",
-                             @"num": @(26),
+                             @"num": @(30),
                              @"color": [UIColor orangeColor]
                              },
                          @{
                              @"name": @"故障",
-                             @"num": @(12),
+                             @"num": @(15),
                              @"color": [UIColor greenColor]
-                             }
+                             },
                          ];
     
-    PieChartView *pieChartView = [[PieChartView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) percentage:percentArr titles:titleArr colors:colorArr];
+    for (NSDictionary *dic in dataArr) {
+        [modelArr addObject:[PieDataModel modelWithDictionary:dic]];
+    }
+    
+    PieChartView *pieChartView = [[PieChartView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) datas:dataArr];
     [self.view addSubview:pieChartView];
 }
 

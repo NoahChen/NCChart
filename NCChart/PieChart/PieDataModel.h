@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface PieDataModel : NSObject
 
 @property (nonatomic, copy) NSString *name;
-@property (nonatomic, assign) NSInteger num;
+@property (nonatomic, assign) NSNumber *num;
 @property (nonatomic, assign) NSInteger *total;
 @property (nonatomic, strong) UIColor *color;
 @property (nonatomic, assign) float startAngle;
